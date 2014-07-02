@@ -23,3 +23,11 @@ UseekM:
 http://biomac.icmc.usp.br:8080/useekm-http-workbench-1.2.1/repositories/SYSTEM/summary
   -> Use http://biomac.icmc.usp.br:8080/useekm-http-server-1.2.1 to server
   -> Use http://biomac.icmc.usp.br:8080/useekm-http-server-1.2.1/repositories/SYSTEM to repository
+
+
+
+Dependences:
+
+-Jersey 1.18
+
+link to download: http://repo1.maven.org/maven2/com/sun/jersey/jersey-bundle/1.18/jersey-bundle-1.18.jar
