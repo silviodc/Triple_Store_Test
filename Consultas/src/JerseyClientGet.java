@@ -1,9 +1,9 @@
-import javax.ws.rs.core.Cookie;
+
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 
 
-
+import javax.ws.rs.core.NewCookie;
 
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.Client;
@@ -13,48 +13,33 @@ import com.sun.jersey.core.util.MultivaluedMapImpl;
 	public class JerseyClientGet {
 	 
 	  public static void main(String[] args) {
-		 // Post_Strabon();
+		 Post_Strabon();
 		  //Post_Parliament();
-		  Get_UseekM();
+		  //Get_UseekM();
 		}
 	  
 	
 	public static void Get_UseekM(){
 		
 		  try {
-				 
+			    String input = "select%20*%20where%20%7B%3Fs%20%3Fp%20%3Fo%7D%20limit%20100";
+			  
 				Client client = Client.create();
+				 
+				WebResource webResource = client.resource("http://biomac.icmc.usp.br:8080/useekm-workbench/repositories/SYSTEM/query?queryLn=SPARQL&query="+input+"&limit=100&infer=true");
 		 
-				WebResource webResource = client.resource("http://biomac.icmc.usp.br:8080/useekm-http-workbench-1.2.1/repositories/");
+				ClientResponse response = webResource.accept("application/xml")
+		                   .get(ClientResponse.class);
 		 
-				webResource.cookie(new Cookie("Last-Modified","1404186962000"));
-				webResource.cookie(new Cookie("limit","100"));
-				webResource.cookie(new Cookie("queryLn", "SPARQL"));
-				webResource.cookie(new Cookie("workbench-server","\"http://biomac.icmc.usp.br:8080/useekm-http-server-1.2.1\""));
-				webResource.cookie(new Cookie("__utma","128681236.142880318.1402850254.1403803053.1403993438.4"));
-				webResource.cookie(new Cookie("__utmz","128681236.1402850254.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)"));
-
-			    @SuppressWarnings("rawtypes")
-				MultivaluedMap queryParams = new MultivaluedMapImpl();
-		        queryParams.add("queryLn", "SPARQL");
-		        queryParams.add("query", "select%20*%20where%20%7B%3Fs%20%3Fp%20%3Fo%7D%20limit%20100");
-		        queryParams.add("limit", "100");
-		        queryParams.add("queryLn", "SPARQL");
-		      
-		        ClientResponse response =  webResource.queryParams(queryParams).type("application/x-www-form-urlencoded").get(ClientResponse.class);
-			       
-				
 				if (response.getStatus() != 200) {
-				    
-					throw new RuntimeException("Failed : HTTP error code : "+ response.getStatus());
-				   
+				   throw new RuntimeException("Failed : HTTP error code : "
+					+ response.getStatus());
 				}
-				System.out.println(response.getHeaders());
+		 
 				String output = response.getEntity(String.class);
 		 
 				System.out.println("Output from Server .... \n");
 				System.out.println(output);
-		 
 			  } catch (Exception e) {
 		 
 				e.printStackTrace();
@@ -70,10 +55,12 @@ import com.sun.jersey.core.util.MultivaluedMapImpl;
 		 
 				WebResource webResource = client.resource("http://biomac.icmc.usp.br:8080/strabon/Query");
 		 
-				String query = "select+*+where+%7B%3Fs+%3Fp+%3Fo%7D+limit+100";
+			//	String query = "select+*+where+%7B%3Fs+%3Fp+%3Fo%7D+limit+100";
+			
+				String query ="PREFIX%20geof%3A%20%3Chttp%3A%2F%2Fwww.opengis.net%2Fdef%2Ffunction%2Fgeosparql%2F%3E%0A%09%09%20%20%20PREFIX%20datasets%3A%20%3Chttp%3A%2F%2Fgeographica.di.uoa.gr%2Fdataset%2F%3E%0A%09%09%20%20%20PREFIX%20geonames%3A%20%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23%3E%0A%09%09%20%20%20PREFIX%20opengis%3A%20%3Chttp%3A%2F%2Fwww.opengis.net%2Fdef%2Fuom%2FOGC%2F1.0%2F%3E%0A%09%09%20%20%20SELECT%20(geof%3AconvexHull(%3Fo1)%20AS%20%3Fret)%20%0A%09%09%20%20%20WHERE%20%7B%20GRAPH%20datasets%3Ageonames%20%7B%3Fs1%20geonames%3AasWKT%20%3Fo1%7D%20%7D";
 				
 				String input = "query="+query+"&view=HTML&format=SPARQL%2FJSON&handle=plain&submit=Query";
-
+				
 				
 				//application/x-www-form-urlencoded
 				ClientResponse response = webResource.type("application/x-www-form-urlencoded").post(ClientResponse.class, input);

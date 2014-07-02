@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<root>
+  <query>
+ 	  <type>Non-topological funtions</type>
+	  <endpoint>UseekM</endpoint>
+	  <number>1</number>
+           <value>PREFIX%20geof%3A%20%3Chttp%3A%2F%2Fwww.opengis.net%2Fdef%2Ffunction%2Fgeosparql%2F%3E%20%0A%09%09%20%20%20PREFIX%20datasets%3A%20%3Chttp%3A%2F%2Fgeographica.di.uoa.gr%2Fdataset%2F%3E%0A%09%09%20%20%20PREFIX%20geonames%3A%20%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23%3E%0A%09%09%20%20%20PREFIX%20opengis%3A%20%3Chttp%3A%2F%2Fwww.opengis.net%2Fdef%2Fuom%2FOGC%2F1.0%2F%3E%0A%09%09%20%20%20SELECT%20(geof%3AconvexHull(%3Fo1)%20AS%20%3Fret)%20%0A%09%09%20%20%20WHERE%20%7B%20GRAPH%20datasets%3Ageonames%20%7B%3Fs1%20geonames%3AasWKT%20%3Fo1%7D%20%7D
+		   </value>
+    </query>
+	<query>
+      <type>Non-topological funtions</type>
+	  <endpoint>UseekM</endpoint>
+	  <number>2</number>
+           <value>PREFIX%20geof%3A%20%3Chttp%3A%2F%2Fwww.opengis.net%2Fdef%2Ffunction%2Fgeosparql%2F%3E%0A%09%09%20%20%20PREFIX%20datasets%3A%20%3Chttp%3A%2F%2Fgeographica.di.uoa.gr%2Fdataset%2F%3E%0A%09%09%20%20%20PREFIX%20geonames%3A%20%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23%3E%0A%09%09%20%20%20PREFIX%20opengis%3A%20%3Chttp%3A%2F%2Fwww.opengis.net%2Fdef%2Fuom%2FOGC%2F1.0%2F%3E%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%09%09%20%20%20SELECT%20(geof%3Abuffer(%3Fo1%2C%204%2C%20opengis%3Ametre)%20AS%20%3Fret)%20%0A%09%09%20%20%20WHERE%20%7B%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%09%09%20%20%20GRAPH%20datasets%3Ageonames%20%7B%3Fs1%20geonames%3AasWKT%20%3Fo1%7D%0A%09%09%20%20%20%7D
+		   </value>
+    </query>
+	<query>
+      <type>Spatial joins</type>
+	  <endpoint>UseekM</endpoint>
+	  <number>3</number>
+           <value>PREFIX%20dataset%3A%20%3Chttp%3A%2F%2Fgeographica.di.uoa.gr%2Fdataset%2F%3E%0A%09%09%20%20%20PREFIX%20geonames%3A%20%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23%3E%0A%09%09%20%20%20PREFIX%20lgd%3A%20%3Chttp%3A%2F%2Flinkedgeodata.org%2Fontology%2F%3E%0A%09%09%20%20%20PREFIX%20geof%3A%3Chttp%3A%2F%2Fwww.opengis.net%2Fdef%2Ffunction%2Fgeosparql%2F%3E%20%0A%09%09%20%20%20SELECT%20%3Fs1%20%3Fo1%20%3Fs2%20%3Fo2%0A%09%09%20%20%20WHERE%20%7B%20%0A%09%09%20%20%20GRAPH%20dataset%3Ageonames%20%7B%3Fs1%20geonames%3AasWKT%20%3Fo1%7D%20%0A%09%09%20%20%20GRAPH%20dataset%3Ageonames%20%7B%3Fs2%20geonames%3AasWKT%20%3Fo2%7D%20%0A%20%20%20%20%20%20%20%20%20%20%20FILTER(%3Fs1%20!%3D%20%3Fs2).%20%20%0A%09%09%20%20%20FILTER(geof%3AsfWithin(%3Fo1%2C%20%3Fo2)).%20%20%0A%09%09%20%20%20%7D 
+		   </value>
+    </query>
+	<query>
+      <type>Spatial joins</type>
+	  <endpoint>UseekM</endpoint>
+	  <number>4</number>
+           <value>PREFIX%20dataset%3A%20%3Chttp%3A%2F%2Fgeographica.di.uoa.gr%2Fdataset%2F%3E%0A%09%09%20%20%20PREFIX%20geonames%3A%20%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23%3E%0A%09%09%20%20%20PREFIX%20lgd%3A%20%3Chttp%3A%2F%2Flinkedgeodata.org%2Fontology%2F%3E%0A%09%09%20%20%20PREFIX%20geof%3A%3Chttp%3A%2F%2Fwww.opengis.net%2Fdef%2Ffunction%2Fgeosparql%2F%3E%20%0A%09%09%20%20%20SELECT%20%3Fs1%20%3Fo1%20%3Fs2%20%3Fo2%0A%09%09%20%20%20WHERE%20%7B%20%0A%09%09%20%20%20GRAPH%20dataset%3Ageonames%20%7B%3Fs1%20geonames%3AasWKT%20%3Fo1%7D%20%0A%09%09%20%20%20GRAPH%20dataset%3Ageonames%20%7B%3Fs2%20geonames%3AasWKT%20%3Fo2%7D%20%0A%09%09%20%20%20FILTER(%3Fs1%20!%3D%20%3Fs2).%20%20%0A%09%09%20%20%20FILTER(geof%3AsfIntersects(%3Fo1%2C%20%3Fo2)).%20%20%0A%09%09%20%20%20%7D 
+		   </value>
+    </query>
+	<query>
+      <type>SPATIAL SELECTION</type>
+	  <endpoint>UseekM</endpoint>
+	  <number>5</number>
+           <value>PREFIX%20dataset%3A%20%3Chttp%3A%2F%2Fgeographica.di.uoa.gr%2Fdataset%2F%3E%0A%09%09%20%20%20PREFIX%20geo%3A%20%3Chttp%3A%2F%2Fwww.opengis.net%2Font%2Fgeosparql%23%3E%0A%09%09%20%20%20PREFIX%20geof%3A%20%3Chttp%3A%2F%2Fwww.opengis.net%2Fdef%2Ffunction%2Fgeosparql%2F%3E%0A%09%09%20%20%20PREFIX%20geonames%3A%20%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23%3E%0A%09%09%20%20%20SELECT%20*%0A%09%09%20%20%20WHERE%20%7B%20%0A%09%09%20%20%20GRAPH%20dataset%3Ageonames%20%7B%3Fs1%20geonames%3AasWKT%20%3Fo1%7D%20%0A%09%09%20%20%20FILTER(geof%3AsfWithin(%3Fo1%2C%20%22Polygon((23.93%2033.23%2C%2023.93%2036.23%2C%2022.63%2033.23%2C%2022.63%2036.23%2C%2023.93%2033.23))%22%5E%5Egeo%3AwktLiteral))%0A%09%09%20%20%20%7D  
+		   </value>
+    </query>
+	<query>
+      <type>SPATIAL SELECTION</type>
+	  <endpoint>UseekM</endpoint>
+	  <number>6</number>
+           <value>PREFIX%20dataset%3A%20%3Chttp%3A%2F%2Fgeographica.di.uoa.gr%2Fdataset%2F%3E%0A%09%09%20%20%20PREFIX%20geof%3A%20%3Chttp%3A%2F%2Fwww.opengis.net%2Fdef%2Ffunction%2Fgeosparql%2F%3E%20%0A%09%09%20%20%20PREFIX%20geo%3A%20%3Chttp%3A%2F%2Fwww.opengis.net%2Font%2Fgeosparql%23%3E%20%0A%09%09%20%20%20PREFIX%20opengis%3A%20%3Chttp%3A%2F%2Fwww.opengis.net%2Fdef%2Fuom%2FOGC%2F1.0%2F%3E%0A%09%09%20%20%20PREFIX%20geonames%3A%20%3Chttp%3A%2F%2Fwww.geonames.org%2Fontology%23%3E%0A%09%09%20%20%20SELECT%20(COUNT(%3Fs1)%20AS%20%3FNumOfTriples)%0A%09%09%20%20%20WHERE%20%7B%20%0A%09%09%20%20%20GRAPH%20dataset%3Ageonames%20%7B%3Fs1%20geonames%3AasWKT%20%3Fo1%7D%20%0A%09%09%20%20%20FILTER(geof%3AsfWithin(%3Fo1%2C%20geof%3Abuffer(%22Polygon((23.93%2033.23%2C%2023.93%2036.23%2C%2022.63%2033.23%2C%2022.63%2036.23%2C%2023.93%2033.23))%22%5E%5Egeo%3AwktLiteral%2C%203000%2C%20opengis%3Ametre))).%20%20%7D
+		   </value>
+	</query>
+	</root>
