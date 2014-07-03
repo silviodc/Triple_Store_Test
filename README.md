@@ -20,10 +20,7 @@ Strabon:
 http://biomac.icmc.usp.br:8080/strabon/
 
 UseekM:
-http://biomac.icmc.usp.br:8080/useekm-http-workbench-1.2.1/repositories/SYSTEM/summary
-  -> Use http://biomac.icmc.usp.br:8080/useekm-http-server-1.2.1 to server
-  -> Use http://biomac.icmc.usp.br:8080/useekm-http-server-1.2.1/repositories/SYSTEM to repository
-
+http://biomac.icmc.usp.br:8080/useekm-workbench/repositories/SYSTEM/query
 
 
 Dependences:
