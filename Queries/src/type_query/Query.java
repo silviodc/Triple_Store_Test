@@ -5,7 +5,7 @@ import java.net.URLEncoder;
 
 public class Query {
  
-	private String query;
+	private String query="";
 	private String endPoint;
 	private String type;
 	private String number;
@@ -23,10 +23,10 @@ public class Query {
 		setType(type);
 	}
 	
-	public String getQuery() throws UnsupportedEncodingException {
+	public String getQuery()  {
 		return query;
 	}
-	public void setQuery(String query) throws UnsupportedEncodingException {
+	public void setQuery(String query) {
 		this.query = query;
 	}
 	public String getEndPoint() {
@@ -78,15 +78,22 @@ public class Query {
 	
 	public void stop(){
 		setFinal_time( System.currentTimeMillis());
+		setTime();
+	}
+	
+	private void setTime(){
+		time = getFinal_time() - getInitial_time();
 	}
 	
 	public double getTime(){
-		return getFinal_time() - getInitial_time();
+		return time;
 	}
 	public void dontRun(){
 		setInitial_time(Double.NaN);
 		setFinal_time(Double.NaN);
 	}
+	
+	@SuppressWarnings("unused")
 	private String buildQuery(String temp) throws UnsupportedEncodingException{
 		temp = temp.replaceAll("\\n", " ").replaceAll("\\s", " ");
 		return URLEncoder.encode(temp,"UTF-8");
